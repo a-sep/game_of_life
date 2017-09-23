@@ -22,7 +22,8 @@ class Settings extends Component {
         super(props);
         this.handleChangeGameSpeed = this.handleChangeGameSpeed.bind(this);
         this.handleChangeBoardSize = this.handleChangeBoardSize.bind(this);
-      }
+        this.reload = this.reload.bind(this);
+    }
 
     handleChangeGameSpeed(event, value) {
         this.props.onChangeGameSpeed(value);
@@ -30,6 +31,13 @@ class Settings extends Component {
 
     handleChangeBoardSize(event, value) {
         this.props.onChangeBoardSize(value);
+    }
+
+    reload() {
+        window.location.reload(false);
+        // If we needed to pull the document from
+        //  the web-server again (such as where the document contents
+        //  change dynamically) we would pass the argument as 'true'.
     }
 
     render() {
@@ -67,7 +75,7 @@ class Settings extends Component {
                     ]}
                 />
                 <Divider />
-                <MenuItem value="1" primaryText="Reload" />
+                <MenuItem value="1" primaryText="Reload" onClick={this.reload} />
             </IconMenu>
         )
     }
