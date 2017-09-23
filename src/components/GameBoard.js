@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
+import React, { Component } from 'react'
+import Paper from 'material-ui/Paper'
+import PropTypes from 'prop-types';
 
 
 const styles = {
@@ -9,7 +10,6 @@ const styles = {
     paper: {
         height: 300,
         width: 500,
-        padding: 60,
         display: 'inline-block',
     },
 };
@@ -20,10 +20,18 @@ class GameBoard extends Component {
         return (
             <section style={styles.center} >
                 <Paper style={styles.paper} zDepth={2}>
+                    <div>Speed: {this.props.gameSpeed}</div>
+                    <br />
+                    <div>Size: {this.props.boardSize}</div>
                 </Paper>
             </section>
         )
     }
 }
+
+GameBoard.propTypes = {
+    gameSpeed: PropTypes.string,
+    boardSize: PropTypes.string,
+};
 
 export default GameBoard

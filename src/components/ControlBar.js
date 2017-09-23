@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Paper from 'material-ui/Paper'
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 
@@ -23,7 +25,20 @@ class ControlBar extends Component {
         selectedIndex: 0,
     };
 
-    select = (index) => this.setState({ selectedIndex: index });
+    select = (index) => {
+        this.setState({ selectedIndex: index });
+        this.handleChangeGameStatus(index)
+    }
+
+    handleChangeGameStatus(index) {
+        if (index === 0) {
+            this.props.onChangeGameStatus('run');
+        } else if (index === 1) {
+            this.props.onChangeGameStatus('pause');
+        } else if (index === 2) {
+            this.props.onChangeGameStatus('clear');
+        }
+    }
 
     render() {
         return (
@@ -34,17 +49,17 @@ class ControlBar extends Component {
                         <BottomNavigationItem
                             label="Run"
                             icon={<AvPlayArrow />}
-                            onClick={() => this.select(0)}
+                            onClick={() => this.select(0, this.label)}
                         />
                         <BottomNavigationItem
                             label="Pause"
                             icon={<AvPause />}
-                            onClick={() => this.select(1)}
+                            onClick={() => this.select(1, this.label)}
                         />
                         <BottomNavigationItem
                             label="Clear"
                             icon={<AvStop />}
-                            onClick={() => this.select(2)}
+                            onClick={() => this.select(2, this.label)}
                         />
                     </BottomNavigation>
                 </Paper>
@@ -52,6 +67,11 @@ class ControlBar extends Component {
             </section>
         )
     }
+}
+
+ControlBar.propTypes = {
+    gameStatus: PropTypes.string,
+    onChangeGameStatus: PropTypes.func
 }
 
 export default ControlBar

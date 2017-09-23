@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -17,29 +18,24 @@ import ImageCrop32 from 'material-ui/svg-icons/image/crop-3-2';
 
 
 class Settings extends Component {
-    state = {
-        firstSlider: 0,
-        secondSlider: 0,
-        gameSpeed: 'slow',
-        boardSize: 'small'
-    };
+    constructor(props) {
+        super(props);
+        this.handleChangeGameSpeed = this.handleChangeGameSpeed.bind(this);
+        this.handleChangeBoardSize = this.handleChangeBoardSize.bind(this);
+      }
 
-    handleChangeGameSpeed = (event, value) => {
-        this.setState({
-            gameSpeed: value,
-        });
-    };
+    handleChangeGameSpeed(event, value) {
+        this.props.onChangeGameSpeed(value);
+    }
 
-    handleChangeBoardSize = (event, value) => {
-        this.setState({
-            boardSize: value,
-        });
-    };
+    handleChangeBoardSize(event, value) {
+        this.props.onChangeBoardSize(value);
+    }
 
     render() {
         return (
             <IconMenu
-            iconStyle={{ color: 'white' }}
+                iconStyle={{ color: 'white' }}
                 iconButtonElement={<IconButton tooltip="Settings"><MoreVertIcon /></IconButton>}
             >
                 <MenuItem
@@ -48,7 +44,7 @@ class Settings extends Component {
                     menuItems={[
                         <Menu
                             onChange={this.handleChangeGameSpeed}
-                            value={this.state.gameSpeed}
+                            value={this.props.gameSpeed}
                         >
                             <MenuItem value="slow" leftIcon={<MapsDirectionsWalk />} primaryText="slow" />
                             <MenuItem value="medium" leftIcon={<MapsDirectionsRun />} primaryText="medium" />
@@ -62,7 +58,7 @@ class Settings extends Component {
                     menuItems={[
                         <Menu
                             onChange={this.handleChangeBoardSize}
-                            value={this.state.boardSize}
+                            value={this.props.boardSize}
                         >
                             <MenuItem value="small" leftIcon={<ImageCrop75 />} primaryText="small" />
                             <MenuItem value="medium" leftIcon={<ImageCrop54 />} primaryText="medium" />
@@ -72,7 +68,6 @@ class Settings extends Component {
                 />
                 <Divider />
                 <MenuItem value="1" primaryText="Reload" />
-
             </IconMenu>
         )
     }
