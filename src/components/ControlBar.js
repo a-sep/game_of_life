@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+// components
 import Paper from 'material-ui/Paper'
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-
+// icons
 import AvPlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import AvPause from 'material-ui/svg-icons/av/pause';
 import AvStop from 'material-ui/svg-icons/av/stop';
-
 
 const styles = {
     root: {
@@ -20,7 +19,6 @@ const styles = {
 };
 
 class ControlBar extends Component {
-
     state = {
         selectedIndex: 0,
     };
@@ -30,7 +28,7 @@ class ControlBar extends Component {
         this.handleChangeGameStatus(index)
     }
 
-    handleChangeGameStatus(index) {
+    handleChangeGameStatus = (index) => {
         if (index === 0) {
             this.props.onChangeGameStatus('run');
         } else if (index === 1) {

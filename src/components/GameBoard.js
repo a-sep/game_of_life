@@ -14,7 +14,6 @@ const styles = {
     },
 };
 
-
 class GameBoard extends Component {
     render() {
         return (
@@ -23,6 +22,8 @@ class GameBoard extends Component {
                     <div>Speed: {this.props.gameSpeed}</div>
                     <br />
                     <div>Size: {this.props.boardSize}</div>
+                    <br/>
+                    <div>Status: {this.props.gameStatus}</div>
                 </Paper>
             </section>
         )
@@ -30,8 +31,9 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
-    gameSpeed: PropTypes.string,
+    gameSpeed: PropTypes.number,
     boardSize: PropTypes.string,
+    gameStatus: PropTypes.string,
 };
 
 export default GameBoard
