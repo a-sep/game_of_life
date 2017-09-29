@@ -9,7 +9,6 @@ import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 // icons
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import MapsDirectionsWalk from 'material-ui/svg-icons/maps/directions-walk';
 import MapsDirectionsRun from 'material-ui/svg-icons/maps/directions-run';
 import MapsDirectionsBike from 'material-ui/svg-icons/maps/directions-bike';

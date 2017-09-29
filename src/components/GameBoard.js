@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
+import './GameBoard.css'
 import Paper from 'material-ui/Paper'
 import PropTypes from 'prop-types';
 
 
 const styles = {
-    center: {
-        textAlign: 'center',
-    },
     paper: {
         height: 300,
         width: 500,
@@ -17,13 +15,9 @@ const styles = {
 class GameBoard extends Component {
     render() {
         return (
-            <section style={styles.center} >
+            <section>
                 <Paper style={styles.paper} zDepth={2}>
-                    <div>Speed: {this.props.gameSpeed}</div>
-                    <br />
-                    <div>Size: {this.props.boardSize}</div>
-                    <br/>
-                    <div>Status: {this.props.gameStatus}</div>
+ 
                 </Paper>
             </section>
         )

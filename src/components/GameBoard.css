@@ -1,0 +1,30 @@
+section{
+    text-align: center;
+}
+
+.paper {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+.cell{
+    margin: 0;
+    padding: 0;
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+    border: 1px solid black;
+
+}
+
+.emptyCell {
+    background-color: lightblue;
+}
+
+.newCell {
+    background-color: pink,
+}
+
+.aktivCell {
+    background-color: red,
+}

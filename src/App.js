@@ -17,11 +17,23 @@ class App extends Component {
       generationCounter: 0,
     };
   }
+  // That function will receive the previous state as the first argument
+  tick() {
+    this.setState((prevState) => ({
+      generationCounter: prevState.generationCounter + 1
+    }));
+  }
 
   handleChangeGameSpeed = (value) => {
     this.setState({
       gameSpeed: value,
     });
+    clearInterval(this.counterID)
+    this.counterID = setInterval(
+      () => this.tick(),
+      value
+    );
+    console.log('new speed', this.counterID)
   };
 
   handleChangeBoardSize = (value) => {
@@ -31,57 +43,43 @@ class App extends Component {
   };
 
   handleChangeGameStatus = (value) => {
-    this.setState({
-      gameStatus: value,
-    });
-    if (value === 'clear') {
-      this.setState({
-        generationCounter: 0,
-      })
-    }
-  };
-
-  componentDidMount() {
-    clearInterval(this.counterID);
-    console.log('componentDidMount(), speed', this.state.gameSpeed)
-    this.counterID = setInterval(
-      () => this.tick(),
-      this.state.gameSpeed
-    );
-  }
-
-  componentDidUpdate() {
-    // TODO clean this code up after finishing boardSize functionality
-    const value = this.state.gameStatus
-
     if (value === 'run') {
       clearInterval(this.counterID);
       this.counterID = setInterval(
         () => this.tick(),
         this.state.gameSpeed
       );
-      console.log('default run', this.counterID)
+      this.setState({
+        gameStatus: value,
+      });
     } else if (value === 'pause') {
-      console.log('pause', this.counterID)
       clearInterval(this.counterID);
-
+      this.setState({
+        gameStatus: value,
+      });
     } else if (value === 'clear') {
-      console.log('clear', this.counterID)
       clearInterval(this.counterID);
+      this.setState({
+        generationCounter: 0,
+        gameStatus: value,
+      })
     }
+  };
+
+  componentDidMount() {
+    this.counterID = setInterval(
+      () => this.tick(),
+      this.state.gameSpeed
+    );
+  }
+
+
+  componentDidUpdate(prevProps, prevState) {
 
   }
 
   componentWillUnmount() {
     clearInterval(this.counterID);
-    console.log('componentWillUnmount()')
-  }
-
-  // That function will receive the previous state as the first argument
-  tick() {
-    this.setState((prevState) => ({
-      generationCounter: prevState.generationCounter + 1
-    }));
   }
 
   render() {
