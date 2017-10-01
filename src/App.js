@@ -98,6 +98,7 @@ class App extends Component {
           <GameBoard
             gameSpeed={this.state.gameSpeed}
             boardSize={this.state.boardSize}
+            gameStatus={this.state.gameStatus}            
           />
           <Footer />
 

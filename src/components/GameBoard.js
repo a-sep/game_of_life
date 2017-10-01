@@ -58,12 +58,18 @@ class GameBoard extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         // update if boardSize has changed
-        if (prevProps.boardSize !== this.props.boardSize) {
-            let board = this.calculateBoardSize(true)
+        if (prevProps.boardSize !== this.props.boardSize || prevProps.gameStatus !== this.props.gameStatus && this.props.gameStatus === 'clear') {
+            let board
+            if (this.props.gameStatus !== 'clear') {
+                board = this.calculateBoardSize(true)
+            } else {
+                board = this.calculateBoardSize()
+            }
             this.setState({
                 cells: board.cells
             })
         }
+
     }
 
     render() {
@@ -97,6 +103,7 @@ class GameBoard extends Component {
 GameBoard.propTypes = {
     gameSpeed: PropTypes.number,
     boardSize: PropTypes.string,
+    gameStatus: PropTypes.string,
 };
 
 export default GameBoard
