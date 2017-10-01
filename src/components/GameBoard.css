@@ -6,25 +6,38 @@ section{
     margin: 0px;
     padding: 0px;
     display: inline-block;
+    border: 1px solid lightgray;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }
+
 .cell{
     margin: 0;
     padding: 0;
     height: 10px;
     width: 10px;
+    border: 1px solid lightgray;
+    border-top-width: 0;
+    border-right-width: 0;
     display: inline-block;
-    border: 1px solid black;
-
+    float: left;
 }
 
 .emptyCell {
-    background-color: lightblue;
+    background-color: white;
 }
 
-.newCell {
-    background-color: pink,
+.youngCell {
+    background-color: pink;
+    border-radius: 50%;
 }
 
-.aktivCell {
-    background-color: red,
+.oldCell {
+    background-color: red;
+    border-radius: 50%;
+}
+
+.cell:hover{
+    background-color: pink;
+    border-radius: 50%;
 }

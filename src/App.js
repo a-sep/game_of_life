@@ -33,7 +33,6 @@ class App extends Component {
       () => this.tick(),
       value
     );
-    console.log('new speed', this.counterID)
   };
 
   handleChangeBoardSize = (value) => {
@@ -73,11 +72,6 @@ class App extends Component {
     );
   }
 
-
-  componentDidUpdate(prevProps, prevState) {
-
-  }
-
   componentWillUnmount() {
     clearInterval(this.counterID);
   }
@@ -104,7 +98,6 @@ class App extends Component {
           <GameBoard
             gameSpeed={this.state.gameSpeed}
             boardSize={this.state.boardSize}
-            gameStatus={this.state.gameStatus}
           />
           <Footer />
 

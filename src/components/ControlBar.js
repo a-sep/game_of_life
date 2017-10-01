@@ -47,17 +47,17 @@ class ControlBar extends Component {
                         <BottomNavigationItem
                             label="Run"
                             icon={<AvPlayArrow />}
-                            onClick={() => this.select(0, this.label)}
+                            onClick={() => this.select(0)}
                         />
                         <BottomNavigationItem
                             label="Pause"
                             icon={<AvPause />}
-                            onClick={() => this.select(1, this.label)}
+                            onClick={() => this.select(1)}
                         />
                         <BottomNavigationItem
                             label="Clear"
                             icon={<AvStop />}
-                            onClick={() => this.select(2, this.label)}
+                            onClick={() => this.select(2)}
                         />
                     </BottomNavigation>
                 </Paper>
