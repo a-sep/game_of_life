@@ -57,9 +57,9 @@ class GameBoard extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // update if boardSize has changed
-        if (prevProps.boardSize !== this.props.boardSize || prevProps.gameStatus !== this.props.gameStatus && this.props.gameStatus === 'clear') {
-            let board
+        // update if boardSize has changed, if gameStatus === clear calculate clear board
+        let board
+        if (prevProps.boardSize !== this.props.boardSize) {
             if (this.props.gameStatus !== 'clear') {
                 board = this.calculateBoardSize(true)
             } else {
@@ -68,7 +68,13 @@ class GameBoard extends Component {
             this.setState({
                 cells: board.cells
             })
+        } else if (prevProps.gameStatus !== 'clear' && this.props.gameStatus === 'clear') { // if user click 'clear' button without changing a size 
+            board = this.calculateBoardSize()
+            this.setState({
+                cells: board.cells
+            })
         }
+
 
     }
 
