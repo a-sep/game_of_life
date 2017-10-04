@@ -12,41 +12,51 @@ class GameBoard extends Component {
         };
     }
 
-    handleChangeCellStatus(i, j, value) {
-        // cellStatus: 0-empty, 1-young, 2-old
-        const cells = this.state.cells
-        if (value === 0) {
-            cells[i][j] = 1
-        } else if (value === 1) {
-            cells[i][j] = 2
-        } else if (value === 2) {
-            cells[i][j] = 0
-        }
-        this.setState({ cells })
-    }
-
-    calculateBoardSize(random) {
+    calculateBoardSize(withLivingCells) {
         const size = this.props.boardSize
         let row
         let col
         if (size === 'small') {
-            row = 15
-            col = 30
+            row = 10
+            col = 20
         } else if (size === 'medium') {
+            row = 20
+            col = 35
+        } else if (size === 'big') {
             row = 30
             col = 50
-        } else if (size === 'big') {
-            row = 45
-            col = 70
         }
+
         let cells = []
         for (let r = 0; r < row; r++) {
             cells.push([]);
             for (var c = 0; c < col; c++) {
-                cells[r].push(random ? Math.floor(Math.random() * 3) : 0)
+                // todo - change range of numbers
+                let entity = 'cell emptyCell'
+                if (withLivingCells) {
+                    let randomNumber = Math.floor(Math.random() * 15)
+                    if (randomNumber < 3) {
+                        randomNumber === 1 ? entity = 'cell youngCell' : entity = 'cell oldCell'
+                    }
+                }
+                cells[r].push(entity)
             }
         }
         return { row, col, cells }
+    }
+
+
+    handleChangeCellStatus(i, j, value) {
+        // cellStatus: 'emptyCell' - 'youngCell' - 'oldCell'
+        const cells = this.state.cells.slice()
+        if (value === 'cell emptyCell') {
+            cells[i][j] = 'cell youngCell'
+        } else if (value === 'cell youngCell') {
+            cells[i][j] = 'cell oldCell'
+        } else if (value === 'cell oldCell') {
+            cells[i][j] = 'cell emptyCell'
+        }
+        this.setState({ cells })
     }
 
     componentWillMount() {
@@ -54,6 +64,9 @@ class GameBoard extends Component {
         this.setState({
             cells: board.cells
         })
+    }
+
+    componentDidMount() {
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -75,27 +88,31 @@ class GameBoard extends Component {
             })
         }
 
-
     }
 
     render() {
+
+        // let start = new Date();
 
         const cells = this.state.cells.map((row, i) => {
             return row.map((col, j) => {
                 return (
                     <div
-                        className={col === 0 ? 'cell emptyCell' : col === 1 ? 'cell youngCell' : 'cell oldCell'}
+                        className={col}
                         onClick={this.handleChangeCellStatus.bind(this, i, j, col)}
                     ></div>
                 )
             })
         });
 
-
+        // let stop = new Date();
+        // let timeDifference = stop.getTime() - start.getTime();
+        // console.log(timeDifference)
+        
         return (
             <section>
                 <Paper
-                    style={{ height: cells.length * 11 + 1, width: cells[0].length * 11 + 1 }}
+                    style={{ height: this.state.cells.length * 11 + 1, width: this.state.cells[0].length * 11 + 1 }}
                     className='paper'
                     zDepth={2}
                 >

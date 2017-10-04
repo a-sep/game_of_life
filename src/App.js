@@ -18,21 +18,18 @@ class App extends Component {
     };
   }
   // That function will receive the previous state as the first argument
-  tick() {
-    this.setState((prevState) => ({
-      generationCounter: prevState.generationCounter + 1
-    }));
+  tick = () => {
+    this.setState({
+      generationCounter: this.state.generationCounter + 1
+    });
   }
 
   handleChangeGameSpeed = (value) => {
+    clearInterval(this.counterID)
+    this.counterID = setInterval(this.tick, value);
     this.setState({
       gameSpeed: value,
     });
-    clearInterval(this.counterID)
-    this.counterID = setInterval(
-      () => this.tick(),
-      value
-    );
   };
 
   handleChangeBoardSize = (value) => {
@@ -44,10 +41,7 @@ class App extends Component {
   handleChangeGameStatus = (value) => {
     if (value === 'run') {
       clearInterval(this.counterID);
-      this.counterID = setInterval(
-        () => this.tick(),
-        this.state.gameSpeed
-      );
+      this.counterID = setInterval(this.tick, this.state.gameSpeed);
       this.setState({
         gameStatus: value,
       });
@@ -67,7 +61,7 @@ class App extends Component {
 
   componentDidMount() {
     this.counterID = setInterval(
-      () => this.tick(),
+      this.tick,
       this.state.gameSpeed
     );
   }
@@ -98,7 +92,7 @@ class App extends Component {
           <GameBoard
             gameSpeed={this.state.gameSpeed}
             boardSize={this.state.boardSize}
-            gameStatus={this.state.gameStatus}            
+            gameStatus={this.state.gameStatus}
           />
           <Footer />
 
