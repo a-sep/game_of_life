@@ -5,7 +5,6 @@ import AppBar from 'material-ui/AppBar';
 import Settings from './Settings'
 import EditorBubbleChart from 'material-ui/svg-icons/editor/bubble-chart';
 
-
 const styles = {
     white: {
         color: 'white',
@@ -25,7 +24,6 @@ class Header extends Component {
         this.props.onChangeBoardSize(value);
     }
 
-
     render() {
         return (
             <header style={styles.center} >
@@ -39,7 +37,7 @@ class Header extends Component {
                         />
                     }
                     title={<span ><EditorBubbleChart style={styles.white} /> Game of Life <EditorBubbleChart style={styles.white} /></span>}
-                    iconElementRight={<span style={styles.white}> Generation: {this.props.generationCounter}</span>}
+                    iconElementRight={<span style={styles.white}>{this.props.generationCounter} generation</span>}
                 />
             </header>
         )

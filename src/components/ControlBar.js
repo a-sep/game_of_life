@@ -10,11 +10,8 @@ import AvStop from 'material-ui/svg-icons/av/stop';
 
 const styles = {
     root: {
-        marginTop: 15,
-        marginBottom: 15,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        marginTop: 10,
+        marginBottom: 10,
     },
 };
 
@@ -41,7 +38,6 @@ class ControlBar extends Component {
     render() {
         return (
             <section >
-
                 <Paper style={styles.root} zDepth={1}>
                     <BottomNavigation selectedIndex={this.state.selectedIndex} >
                         <BottomNavigationItem
@@ -61,7 +57,6 @@ class ControlBar extends Component {
                         />
                     </BottomNavigation>
                 </Paper>
-
             </section>
         )
     }

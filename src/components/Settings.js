@@ -45,9 +45,9 @@ class Settings extends Component {
                     onChange={this.handleChangeGameSpeed}
                     value={this.props.gameSpeed}
                 >
-                    <MenuItem value={1500} leftIcon={<MapsDirectionsWalk />} primaryText="slow" />
-                    <MenuItem value={1000} leftIcon={<MapsDirectionsRun />} primaryText="medium" />
-                    <MenuItem value={500} leftIcon={<MapsDirectionsBike />} primaryText="fast" />
+                    <MenuItem value={1000} leftIcon={<MapsDirectionsWalk />} primaryText="slow" />
+                    <MenuItem value={500} leftIcon={<MapsDirectionsRun />} primaryText="medium" />
+                    <MenuItem value={100} leftIcon={<MapsDirectionsBike />} primaryText="fast" />
                 </Menu>
                 <Divider />
                 <Subheader>Board size</Subheader>

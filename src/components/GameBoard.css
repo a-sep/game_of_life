@@ -28,12 +28,13 @@ section{
 }
 
 .youngCell {
-    background-color: pink;
+    background-color: #FF80AB;
     border-radius: 50%;
 }
 
 .oldCell {
-    background-color: red;
+    background-color: #FF4081;
+    /* background-color: #F50057; */
     border-radius: 50%;
 }
 

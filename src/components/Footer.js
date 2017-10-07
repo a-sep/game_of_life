@@ -7,15 +7,15 @@ class Footer extends Component {
                 textAlign: 'center',
                 fontSize: '0.7em',
                 marginTop: 10,
+                marginBottom: 10,
             }}>
                 coded by <a href="https://codepen.io/artur_sep/"
                     style={{
                         textAlign: 'center',
                         textDecoration: 'none',
-                        color: '#00BCD4',
-
+                        color: '#C51162',
                     }}>
-                    <strong>@a-sep</strong>
+                    <strong>@sep_artur</strong>
                 </a>
             </footer>
         )
