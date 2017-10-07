@@ -9,13 +9,13 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      gameSpeed: 500,
+      gameSpeed: 1000,
       boardSize: 'small',
       gameStatus: 'run',
       generationCounter: 0,
       cells: [],
-      row: 10,
-      col: 20,
+      row: 25,
+      col: 40,
     };
   }
 
